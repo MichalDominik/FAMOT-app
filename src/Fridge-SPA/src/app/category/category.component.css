@@ -1,7 +1,31 @@
 .column {
     flex: 50%;
+    padding: 20px;
 }
 
 .row {
     display: flex;
+}
+
+table {
+    width: 100%;
+    padding-left: 20px;
+}
+
+.mat-column-name {
+    width: 75%;
+    font-size: 20px;
+}
+
+.addCategoryHeader {
+    font-size: 30px;
+}
+
+.addCategoryForm {
+    font-size: 20px;
+}
+
+.addCategoryButton {
+    margin-left: 20px;
+    font-size: 20px;
 }

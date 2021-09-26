@@ -86,7 +86,7 @@ export class ProductComponent implements OnInit {
     this.productForEdit = product;
   }
 
-  update(){
+  update() {
     if (this.productForEdit) {
       const categoryCheck = this.getCategoryId(this.productCategoryEdit);
       if (categoryCheck === -1) return;
@@ -99,8 +99,12 @@ export class ProductComponent implements OnInit {
           this.products[indx] = prod;
         }
       });
-      this.productForEdit = undefined;
-      this.productCategoryEdit = '';
+      this.cancel();
     }
+  }
+
+  cancel() {
+    this.productForEdit = undefined;
+    this.productCategoryEdit = '';
   }
 }

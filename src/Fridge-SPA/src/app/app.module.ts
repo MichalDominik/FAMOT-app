@@ -10,6 +10,10 @@ import { FormsModule } from '@angular/forms';
 import { CategoryComponent } from './category/category.component';
 import { ProductComponent } from './product/product.component';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule} from '@angular/material/input';
+import { MatTableModule} from '@angular/material/table';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +25,10 @@ import { ProductComponent } from './product/product.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatButtonModule,
+    MatInputModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

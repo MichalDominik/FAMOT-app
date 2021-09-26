@@ -19,9 +19,10 @@
                 <input *ngIf="product===productForEdit"
                 [(ngModel)]="product.description"
                 (keyup.enter)="update()">
-                <button (click)="editProduct(product)" *ngIf="product!==productForEdit">EDYTUJ</button>
-                <button (click)="update()" *ngIf="product===productForEdit">ZAPISZ</button>
-                <button (click)="deleteProduct(product)" *ngIf="product!==productForEdit">USUŃ</button>
+                <button mat-raised-button color="primary" (click)="editProduct(product)" *ngIf="product!==productForEdit">EDYTUJ</button>
+                <button mat-raised-button color="warn" (click)="deleteProduct(product)" *ngIf="product!==productForEdit">USUŃ</button>
+                <button mat-raised-button color="primary" (click)="update()" *ngIf="product===productForEdit">ZAPISZ</button>
+                <button mat-raised-button color="warn" (click)="cancel()" *ngIf="product===productForEdit">ANULUJ</button>
             </li>
         </ul>
     </div>
