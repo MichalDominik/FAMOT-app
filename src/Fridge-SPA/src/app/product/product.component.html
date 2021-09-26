@@ -1,1 +1,25 @@
-<p>product works!</p>
+<div class="row">
+    <div class="column">
+        <h2>Lista Produktów</h2>
+        <ul>
+            <li *ngFor="let product of products">
+                <hr>
+                <span>{{product.id}} | {{product.name}} | {{product.categoryId}} | {{product.description}} | </span>
+                <button (click)="deleteProduct(product)">USUŃ</button>
+            </li>
+        </ul>
+    </div>
+    <div class="column">
+        <h2>Dodaj produkt</h2>
+        <span>Nazwa:</span>
+        <input type="text" required [(ngModel)]="productToAdd.name" #productName><br>
+        <span>Kategoria:</span>
+        <select [(ngModel)]="categoryToAdd">
+            <option>Wybierz...</option>
+            <option *ngFor="let category of categories">{{category.name}}</option>
+        </select><br>
+        <span>Opis:</span>
+        <input type="text" required [(ngModel)]="productToAdd.description" #productDescription><br>
+        <button (click)="addProduct(); productName.value=''; productDescription.value=''">DODAJ PRODUKT</button>
+    </div>
+</div>

@@ -14,7 +14,7 @@ namespace Fridge.API.Dtos.Product
         [StringLength(200, ErrorMessage = "Wartość {0} musi mieć między {2} a {1} znaków", MinimumLength = 2)]
         public string Name { get; set; }
 
-        [StringLength(300, ErrorMessage = "Wartość {0} musi mieć między {2} a {1} znaków", MinimumLength = 2)]
+        [StringLength(300, ErrorMessage = "Wartość {0} musi mieć między {2} a {1} znaków")]
         public string Description { get; set; }
     }
 }

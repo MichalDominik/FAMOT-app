@@ -4,7 +4,7 @@
         <ul>
             <li *ngFor="let category of categories">
                 <hr>
-                <span>{{category.name}} | </span>
+                <span>{{category.id}} | {{category.name}} | </span>
                 <button (click)="deleteCategory(category)">USUŃ</button>
             </li>
         </ul>
