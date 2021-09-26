@@ -12,7 +12,6 @@
                 <span *ngIf="product!==productForEdit">{{getCategoryName(product.categoryId)}} | </span>
                 <span *ngIf="product===productForEdit">Kategoria:</span>
                 <select *ngIf="product===productForEdit" [(ngModel)]="productCategoryEdit">
-                    <option>Wybierz...</option>
                     <option *ngFor="let category of categories">{{category.name}}</option>
                 </select>
                 <span *ngIf="product!==productForEdit">{{product.description}} | </span>
@@ -22,7 +21,7 @@
                 (keyup.enter)="update()">
                 <button (click)="editProduct(product)" *ngIf="product!==productForEdit">EDYTUJ</button>
                 <button (click)="update()" *ngIf="product===productForEdit">ZAPISZ</button>
-                <button (click)="deleteProduct(product)">USUŃ</button>
+                <button (click)="deleteProduct(product)" *ngIf="product!==productForEdit">USUŃ</button>
             </li>
         </ul>
     </div>

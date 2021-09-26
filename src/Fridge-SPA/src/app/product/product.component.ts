@@ -88,7 +88,9 @@ export class ProductComponent implements OnInit {
 
   update(){
     if (this.productForEdit) {
-      this.productForEdit.categoryId = this.getCategoryId(this.productCategoryEdit);
+      const categoryCheck = this.getCategoryId(this.productCategoryEdit);
+      if (categoryCheck === -1) return;
+      this.productForEdit.categoryId = categoryCheck;
       this.productService
       .updateProductToServer(this.productForEdit)
       .subscribe( prod => {
