@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="column">
+        <h2>Lista kategorii</h2>
+        <ul>
+            <li *ngFor="let category of categories">
+                <hr>
+                <span>{{category.name}} | </span>
+                <button (click)="deleteCategory(category)">USUŃ</button>
+            </li>
+        </ul>
+    </div>
+    <div class="column">
+        <h2>Dodaj kategorię</h2>
+        <span>Nazwa:</span><hr>
+        <input type="text" required [(ngModel)]="categoryToAdd.name" #categoryName><hr>
+        <button (click)="addCategory(); categoryName.value=''">DODAJ KATEGORIĘ</button>
+    </div>
+</div>
