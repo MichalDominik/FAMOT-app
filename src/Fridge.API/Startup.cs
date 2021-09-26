@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+using Fridge.API.Configuration;
 
 namespace Fridge.API
 {
@@ -30,7 +32,10 @@ namespace Fridge.API
             {
                 options.UseSqlServer(Configuration.GetConnectionString("MyConnection"));
             });
+            services.AddAutoMapper(typeof(Startup));
+            services.AddCors();
             services.AddControllers();
+            services.ResolveDependencies();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +47,11 @@ namespace Fridge.API
             }
 
             app.UseRouting();
+
+            app.UseCors(x =>
+            x.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
 
             app.UseAuthorization();
 
