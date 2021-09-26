@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 
 import { Category } from '../model/category';
 import { CategoryService } from './category.service';
@@ -37,9 +37,6 @@ export class CategoryComponent implements OnInit {
       next: data => {
         this.categories.push(data);
         this.refresh();
-      },
-      error: error => {
-
       }
     });
   }
@@ -51,9 +48,6 @@ export class CategoryComponent implements OnInit {
       next: data => {
         this.categories = this.categories.filter(c => c !== category);
         this.refresh();
-      },
-      error: error => {
-        
       }
     });
   }

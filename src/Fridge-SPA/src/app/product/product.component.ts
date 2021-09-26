@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from '../model/category';
+import { MatTableDataSource } from '@angular/material/table';
 
+import { Category } from '../model/category';
 import { Product } from '../model/product';
 import { ProductService } from './product.service';
 
@@ -20,11 +21,15 @@ export class ProductComponent implements OnInit {
   categoryToAdd = new String('');
   productCategoryEdit = new String('');
 
+  displayedColumns: string[] = ['name', 'category', 'description', 'edit', 'delete'];
+  dataSource = new MatTableDataSource<Product>();
+
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
     this.getProducts();
     this.getCategories();
+    this.refresh();
   }
 
   getProducts(): void {
@@ -61,9 +66,7 @@ export class ProductComponent implements OnInit {
     .subscribe({
       next: data => {
         this.products.push(data);
-      },
-      error: error => {
-        console.log(error.message);
+        this.refresh();
       }
     });
     this.categoryToAdd = '';
@@ -75,9 +78,7 @@ export class ProductComponent implements OnInit {
     .subscribe({
       next: data => {
         this.products = this.products.filter(p => p !== product);
-      },
-      error: error => {
-
+        this.refresh();
       }
     });
   }
@@ -97,14 +98,24 @@ export class ProductComponent implements OnInit {
         const indx = prod ? this.products.findIndex(p => p.id === prod.id) : -1;
         if (indx > -1) {
           this.products[indx] = prod;
-        }
+        };
+        this.cancel();
       });
-      this.cancel();
     }
   }
 
   cancel() {
     this.productForEdit = undefined;
     this.productCategoryEdit = '';
+    this.refresh();
+  }
+
+  refresh(): void {
+    this.productService.getProductsFromServer()
+    .subscribe({
+      next: data => {
+        this.dataSource.data = data;
+      }
+    })
   }
 }

@@ -1,7 +1,7 @@
 <h2 class="categoryHeader">Kategorie</h2>
 <div class="row">
-    <div class="column">
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z4" #table>
+    <div class="column1">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z4">
             <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef>Nazwa</th>
                 <td mat-cell *matCellDef="let category">{{category.name}}</td>
@@ -16,12 +16,12 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
     </div>
-    <div class="column">
+    <div class="column2">
         <h2 class="addCategoryHeader">Dodaj kategorię</h2>
-    <mat-form-field appearance="fill">
-        <mat-label>Nazwa kategorii</mat-label>
-        <input matInput type="text" required [(ngModel)]="categoryToAdd.name" #categoryName class="addCategoryForm">
-    </mat-form-field>
-    <button mat-raised-button color="primary" (click)="addCategory(); categoryName.value=''" class="addCategoryButton">DODAJ</button>
+        <mat-form-field appearance="fill">
+            <mat-label>Nazwa kategorii</mat-label>
+            <input matInput type="text" required [(ngModel)]="categoryToAdd.name" #categoryName class="addCategoryForm">
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="addCategory(); categoryName.value=''" class="addCategoryButton">DODAJ</button>
     </div>
 </div>
