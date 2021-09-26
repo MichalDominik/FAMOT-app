@@ -60,46 +60,23 @@
     </div>
     <div class="column2">
         <h2 class="addProductHeader">Dodaj produkt</h2>
-    </div>
-</div>
-<div class="row">
-    <div class="column1">
-        <ul>
-            <li *ngFor="let product of products">
-                <hr>
-                <span *ngIf="product!==productForEdit">{{product.name}} | </span>
-                <span *ngIf="product===productForEdit">Nazwa:</span>
-                <input *ngIf="product===productForEdit"
-                [(ngModel)]="product.name"
-                (keyup.enter)="update()">
-                <span *ngIf="product!==productForEdit">{{getCategoryName(product.categoryId)}} | </span>
-                <span *ngIf="product===productForEdit">Kategoria:</span>
-                <select *ngIf="product===productForEdit" [(ngModel)]="productCategoryEdit">
-                    <option *ngFor="let category of categories">{{category.name}}</option>
-                </select>
-                <span *ngIf="product!==productForEdit">{{product.description}} | </span>
-                <span *ngIf="product===productForEdit">Opis:</span>
-                <input *ngIf="product===productForEdit"
-                [(ngModel)]="product.description"
-                (keyup.enter)="update()">
-                <button mat-raised-button color="primary" (click)="editProduct(product)" *ngIf="product!==productForEdit">EDYTUJ</button>
-                <button mat-raised-button color="warn" (click)="deleteProduct(product)" *ngIf="product!==productForEdit">USUŃ</button>
-                <button mat-raised-button color="primary" (click)="update()" *ngIf="product===productForEdit">ZAPISZ</button>
-                <button mat-raised-button color="warn" (click)="cancel()" *ngIf="product===productForEdit">ANULUJ</button>
-            </li>
-        </ul>
-    </div>
-    <div class="column2">
-        <h2>Dodaj produkt</h2>
-        <span>Nazwa:</span>
-        <input type="text" required [(ngModel)]="productToAdd.name" #productName><br>
-        <span>Kategoria:</span>
-        <select [(ngModel)]="categoryToAdd">
-            <option>Wybierz...</option>
-            <option *ngFor="let category of categories">{{category.name}}</option>
-        </select><br>
-        <span>Opis:</span>
-        <input type="text" required [(ngModel)]="productToAdd.description" #productDescription><br>
-        <button (click)="addProduct(); productName.value=''; productDescription.value=''">DODAJ PRODUKT</button>
+        <mat-form-field appearance="fill">
+            <mat-label>Nazwa</mat-label>
+            <input matInput type="text" required [(ngModel)]="productToAdd.name" #productName>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Kategoria</mat-label>
+            <mat-select [(value)]="categoryToAdd" required>
+                <mat-option *ngFor="let category of categories" [value]="category.name">{{category.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Opis</mat-label>
+            <input matInput type="text" [(ngModel)]="productToAdd.description" #productDescription>
+        </mat-form-field>
+        <br>
+        <button mat-raised-button color="primary" (click)="addProduct(); productName.value=''; productDescription.value=''">DODAJ</button>
     </div>
 </div>

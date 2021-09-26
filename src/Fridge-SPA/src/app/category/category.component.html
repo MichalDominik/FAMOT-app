@@ -19,9 +19,10 @@
     <div class="column2">
         <h2 class="addCategoryHeader">Dodaj kategorię</h2>
         <mat-form-field appearance="fill">
-            <mat-label>Nazwa kategorii</mat-label>
+            <mat-label>Nazwa</mat-label>
             <input matInput type="text" required [(ngModel)]="categoryToAdd.name" #categoryName class="addCategoryForm">
         </mat-form-field>
-        <button mat-raised-button color="primary" (click)="addCategory(); categoryName.value=''" class="addCategoryButton">DODAJ</button>
+        <br>
+        <button mat-raised-button color="primary" (click)="addCategory(); categoryName.value=''">DODAJ</button>
     </div>
 </div>
