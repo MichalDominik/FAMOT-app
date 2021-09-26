@@ -36,8 +36,15 @@ export class ProductComponent implements OnInit {
     .subscribe(c => this.categories = c);
   }
 
+  getCategoryName(id: number): string {
+    const lookup = this.categories.find(c => c.id === id);
+    if (lookup !== undefined){
+      return lookup.name;
+    }
+    return 'hello';
+  }
+
   addProduct(): void {
-    this.getCategories();
     const category = this.categories.find(c => c.name === this.categoryToAdd);
     const productToPush = new Product(-1, this.productToAdd.name, category ? category.id : -1, this.productToAdd.description);
     this.productService
@@ -50,7 +57,6 @@ export class ProductComponent implements OnInit {
         console.log(error.message);
       }
     });
-    productToPush.categoryId = -1;
     this.categoryToAdd = '';
   }
 
