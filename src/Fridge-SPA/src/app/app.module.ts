@@ -13,6 +13,7 @@ import { ProductComponent } from './product/product.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule} from '@angular/material/input';
 import { MatTableModule} from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs'
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MatTableModule} from '@angular/material/table';
     FormsModule,
     MatButtonModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
