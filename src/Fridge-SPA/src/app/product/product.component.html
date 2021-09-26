@@ -4,7 +4,24 @@
         <ul>
             <li *ngFor="let product of products">
                 <hr>
-                <span>{{product.id}} | {{product.name}} | {{getCategoryName(product.categoryId)}} | {{product.description}} | </span>
+                <span *ngIf="product!==productForEdit">{{product.name}} | </span>
+                <span *ngIf="product===productForEdit">Nazwa:</span>
+                <input *ngIf="product===productForEdit"
+                [(ngModel)]="product.name"
+                (keyup.enter)="update()">
+                <span *ngIf="product!==productForEdit">{{getCategoryName(product.categoryId)}} | </span>
+                <span *ngIf="product===productForEdit">Kategoria:</span>
+                <select *ngIf="product===productForEdit" [(ngModel)]="productCategoryEdit">
+                    <option>Wybierz...</option>
+                    <option *ngFor="let category of categories">{{category.name}}</option>
+                </select>
+                <span *ngIf="product!==productForEdit">{{product.description}} | </span>
+                <span *ngIf="product===productForEdit">Opis:</span>
+                <input *ngIf="product===productForEdit"
+                [(ngModel)]="product.description"
+                (keyup.enter)="update()">
+                <button (click)="editProduct(product)" *ngIf="product!==productForEdit">EDYTUJ</button>
+                <button (click)="update()" *ngIf="product===productForEdit">ZAPISZ</button>
                 <button (click)="deleteProduct(product)">USUŃ</button>
             </li>
         </ul>

@@ -18,6 +18,7 @@ export class ProductComponent implements OnInit {
 
   productToAdd = new Product(-1, '', -1, '');
   categoryToAdd = new String('');
+  productCategoryEdit = new String('');
 
   constructor(private productService: ProductService) { }
 
@@ -36,12 +37,20 @@ export class ProductComponent implements OnInit {
     .subscribe(c => this.categories = c);
   }
 
-  getCategoryName(id: number): string {
+  getCategoryName(id: number): String {
     const lookup = this.categories.find(c => c.id === id);
-    if (lookup !== undefined){
+    if (lookup !== undefined) {
       return lookup.name;
     }
-    return 'hello';
+    return 'error';
+  }
+
+  getCategoryId(name: String): number {
+    const lookup = this.categories.find(c => c.name === name);
+    if (lookup !== undefined) {
+      return lookup.id;
+    }
+    return -1;
   }
 
   addProduct(): void {
@@ -79,6 +88,7 @@ export class ProductComponent implements OnInit {
 
   update(){
     if (this.productForEdit) {
+      this.productForEdit.categoryId = this.getCategoryId(this.productCategoryEdit);
       this.productService
       .updateProductToServer(this.productForEdit)
       .subscribe( prod => {
@@ -88,6 +98,7 @@ export class ProductComponent implements OnInit {
         }
       });
       this.productForEdit = undefined;
+      this.productCategoryEdit = '';
     }
   }
 }
