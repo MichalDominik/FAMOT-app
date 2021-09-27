@@ -1,7 +1,41 @@
 <mat-tab-group>
-    <mat-tab label="Produkty"><app-product></app-product></mat-tab>
     <mat-tab label="Kategorie"><app-category></app-category></mat-tab>
-    
-    <mat-tab label="placeholder"></mat-tab>
+    <mat-tab label="Produkty"><app-product></app-product></mat-tab>
+    <mat-tab label="O aplikacji">
+        <h2 style="text-align: center; font-size: 30px; margin-top: 60px;">Aplikacja do zarządzania produktami</h2>
+        <h1 style="text-align: center; font-size: 20px; margin-top: 20px;">Michał Dominik</h1>
+        <h1 style="text-align: center; font-size: 20px; margin-top: 20px; font-style: italic;">Zadanie rekrutacyjne dla FAMOT Pleszew</h1>
+        <p style="text-align: center; margin-top: 40px; margin-left: 10%; margin-right: 10%;">Aplikacja wykorzystuje ASP.NET CORE w architekturze warstwowej. Backend tworzą trzy warstwy:<br>
+        - warstwa "Repository" - wykorzystuje Entity Framework, aby stworzyć i aktualizować bazę danych na podstawie kodu,<br>
+        - warstwa "Service" - zawiera metody do zarządzania bazą danych,<br>
+        - warstwa "API" - zawiera kontrolery, które obsługują żądania REST.<br><br>
+        Frontend wykorzystuje technologię Angular. Składa się z dwóch komponentów: "category" oraz "product".<br>
+        Każdy z komponentów posiada dwie warstwy logiczne:<br>
+        - warstwa "Service" - wysyła odpowiednie żądania REST,<br>
+        - warstwa "Component" - obsługuje logikę komponentu.<br>
+        Frontend korzysta z Angular Material.<br><br>
+        </p>
+        <div style="display: flex;">
+            <div style="flex: 50%; padding: 20px; text-align: center;">
+                <h1>Zaimplementowana funkcjonalność:</h1>
+                <p>Dodanie kategorii</p>
+                <p>Usunięcie kategorii</p>
+                <p>Dodanie produktu</p>
+                <p>Usunięcie produktu</p>
+                <p>Aktualizacja produktu (nazwa, kategoria, opis)</p>
+                <p>Zabezpieczenia:</p>
+                <p>- nazwa oraz kategoria jest wymagana przy dodawaniu produktu</p>
+                <p>- nie można dodać kategorii lub produktu o już istniejącej nazwie</p>
+                <p>- nie można usunąć kategorii, do której należą jakieś produkty</p>
+            </div>
+            <div style="flex: 50%; padding: 20px; text-align: center;">
+                <h1>(Opcjonalnie) Do zaimplementowania:</h1>
+                <p>System wiadomości, aby poinformować użytkownika o błędach,</p>
+                <p>np. gdy nie wybierze kategorii przy dodawaniu produktu</p>
+                <p>lub gdy chce usunąć kategorię, do której jest przypisany produkt</p>
+            </div>
+        </div>
+        <footer style="flex-shrink: 0; text-align: center;">2021 Michał Dominik</footer>
+    </mat-tab>
 </mat-tab-group>
 <router-outlet></router-outlet>
