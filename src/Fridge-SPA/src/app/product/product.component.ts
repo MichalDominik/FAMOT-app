@@ -85,6 +85,7 @@ export class ProductComponent implements OnInit {
 
   editProduct(product: Product) {
     this.productForEdit = product;
+    this.productCategoryEdit = this.getCategoryName(product.categoryId);
   }
 
   update() {
